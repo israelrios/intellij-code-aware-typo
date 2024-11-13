@@ -1,0 +1,6 @@
+<idea-plugin>
+	<extensions defaultExtensionNs="com.intellij.spellchecker">
+		<support language="JAVA" order="first"
+			implementationClass="com.rios.typoignorecode.NoNamedElementSpellStrategy" />
+	</extensions>
+</idea-plugin>
