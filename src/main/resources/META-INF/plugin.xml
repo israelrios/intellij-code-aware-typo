@@ -29,15 +29,18 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
          Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
     <description><![CDATA[
-	Disables typo inspection on some code elements.
-	<br/>
-	<br/>
+<p>Disables typo inspection on specific code elements in IntelliJ IDEA.</p>
 
-    Disables the typo inspection on:
-    <ul>
-      <li>Keys of properties files</li>
-      <li>Java variables, methods and classes</li>
-    </ul>
+<p>This plugin suppresses the "Typo" inspection for:</p>
+<ul>
+  <li>Keys in <code>.properties</code> files.</li>
+  <li>Names of Java variables, methods, and classes.</li>
+  <li>Names in HTML and XML.</li>
+  <li>Names in JavaScript, CSS, SQL, and Shell Script.</li>
+  <li>Resolvable string literal references inside Java annotation attributes</li>
+</ul>
+
+<p>This prevents the IDE from flagging these elements as spelling errors, even if they don't conform to standard dictionary words.</p>
     ]]></description>
 
     <idea-version since-build="242"/>
