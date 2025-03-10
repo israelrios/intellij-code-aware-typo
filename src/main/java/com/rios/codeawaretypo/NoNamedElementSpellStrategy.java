@@ -33,6 +33,10 @@ public class NoNamedElementSpellStrategy extends SpellcheckingStrategy {
     }
 
     private boolean hasResolvableReference(PsiLiteralValue element) {
+        // Check project settings *before* any other checks
+        if (!isEnabled(element)) {
+            return false;
+        }
         if (!(element.getValue() instanceof String)) {
             return false;
         }
@@ -55,13 +59,8 @@ public class NoNamedElementSpellStrategy extends SpellcheckingStrategy {
 
     @Override
     public boolean isMyContext(@NotNull PsiElement element) {
-        // Check project settings *before* any other checks
-        if (!CodeAwareTypoProjectSettings.getInstance(element.getProject()).isEnabled()) {
-            return false;
-        }
-
         if (element instanceof PsiNamedElement) {
-            return true;
+            return isEnabled(element);
         }
         if (element instanceof PsiLiteralExpression literalExpression) {
 
@@ -74,5 +73,9 @@ public class NoNamedElementSpellStrategy extends SpellcheckingStrategy {
             return element instanceof JSLiteralExpression jsle && hasResolvableReference(jsle);
         }
         return false;
+    }
+
+    private static boolean isEnabled(@NotNull PsiElement element) {
+        return CodeAwareTypoProjectSettings.getInstance(element.getProject()).isEnabled();
     }
 }

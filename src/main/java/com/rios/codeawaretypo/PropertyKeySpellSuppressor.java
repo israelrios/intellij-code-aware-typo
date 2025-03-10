@@ -30,8 +30,8 @@ public class PropertyKeySpellSuppressor implements InspectionSuppressor {
     @Override
     public boolean isSuppressedFor(@NotNull PsiElement element, @NotNull String toolId) {
         return SpellCheckingInspection.SPELL_CHECKING_INSPECTION_TOOL_NAME.equals(toolId)
-               && CodeAwareTypoProjectSettings.getInstance(element.getProject()).isEnabled()
-               && element instanceof PropertyKeyImpl;
+            && element instanceof PropertyKeyImpl
+            && CodeAwareTypoProjectSettings.getInstance(element.getProject()).isEnabled();
     }
 
     @Override
