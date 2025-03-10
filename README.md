@@ -1,4 +1,4 @@
-# Typo Ignore Code
+# Code-Aware Typo
 
 **Disables typo inspection on specific code elements in IntelliJ IDEA.**
 
@@ -19,7 +19,7 @@ words.
 
 **License:** GNU Affero General Public License v3 (AGPLv3)
 
-**Installation:** Install directly from the JetBrains Marketplace (search for "Typo Ignore Code").
+**Installation:** Install directly from the JetBrains Marketplace (search for "Code-Aware Typo").
 
 **How it works:**
 

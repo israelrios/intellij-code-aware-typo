@@ -1,6 +1,5 @@
 /*
- * Typo Ignore Code
- * Copyright (C) 2025  Israel Rios
+ * Copyright (c) 2025  Israel Rios
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as published by
@@ -16,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.rios.typoignorecode;
+package com.rios.codeawaretypo;
 
 import com.intellij.lang.javascript.psi.JSLiteralExpression;
 import com.intellij.psi.*;
@@ -56,6 +55,11 @@ public class NoNamedElementSpellStrategy extends SpellcheckingStrategy {
 
     @Override
     public boolean isMyContext(@NotNull PsiElement element) {
+        // Check project settings *before* any other checks
+        if (!CodeAwareTypoProjectSettings.getInstance(element.getProject()).isEnabled()) {
+            return false;
+        }
+
         if (element instanceof PsiNamedElement) {
             return true;
         }
