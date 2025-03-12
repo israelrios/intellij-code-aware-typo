@@ -27,7 +27,8 @@
     <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
          Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
-    <description><![CDATA[
+    <description>
+        <![CDATA[
         <p>Disables typo inspection on specific code elements in IntelliJ IDEA.</p>
 
         <p>This plugin suppresses the "Typo" inspection for:</p>
@@ -51,7 +52,16 @@
 
         <p>This prevents the IDE from flagging these elements as spelling errors, even if they don't conform to standard
             dictionary words.</p>
-        ]]></description>
+        ]]>
+    </description>
+
+    <change-notes>
+        <![CDATA[
+        <ul>
+            <li>- Supporting PHP and Kotlin.</li>
+        </ul>
+        ]]>
+    </change-notes>
 
     <idea-version since-build="242"/>
 
