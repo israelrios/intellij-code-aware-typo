@@ -16,8 +16,8 @@
   -->
 
 <idea-plugin>
-	<extensions defaultExtensionNs="com.intellij.spellchecker">
-		<support language="JAVA" order="first"
-			implementationClass="com.rios.codeawaretypo.NoNamedElementSpellStrategy" />
-	</extensions>
+    <extensions defaultExtensionNs="com.intellij.spellchecker">
+        <support language="JAVA" order="first"
+                 implementationClass="com.rios.codeawaretypo.NoNamedElementSpellStrategy"/>
+    </extensions>
 </idea-plugin>
