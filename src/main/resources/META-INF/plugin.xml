@@ -44,6 +44,7 @@
                     <li>SQL</li>
                     <li>PHP</li>
                     <li>Shell Script</li>
+                    <li>Python</li>
                 </ul>
             </li>
             <li>HTML and XML tags.</li>
@@ -58,6 +59,7 @@
     <change-notes>
         <![CDATA[
         <ul>
+            <li>Supporting Python.</li>
             <li>Supporting PHP and Kotlin.</li>
         </ul>
         ]]>
@@ -74,6 +76,7 @@
     <depends optional="true" config-file="withSql.xml">com.intellij.modules.sql</depends>
     <depends optional="true" config-file="withPhp.xml">com.jetbrains.php</depends>
     <depends optional="true" config-file="withKotlin.xml">org.jetbrains.kotlin</depends>
+    <depends optional="true" config-file="withPython.xml">com.intellij.modules.python-core-capable</depends>
 
     <extensions defaultExtensionNs="com.intellij">
         <projectConfigurable

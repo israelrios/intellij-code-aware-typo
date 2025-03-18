@@ -21,7 +21,7 @@ plugins {
 }
 
 group = "com.rios"
-version = "1.0.3"
+version = "1.0.4"
 
 repositories {
     mavenCentral()
