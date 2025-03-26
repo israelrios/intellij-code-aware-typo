@@ -48,6 +48,7 @@
                 </ul>
             </li>
             <li>HTML and XML tags.</li>
+            <li>JSON properties.</li>
             <li>Resolvable string literal references inside Java annotation attributes</li>
         </ul>
 
@@ -59,8 +60,9 @@
     <change-notes>
         <![CDATA[
         <ul>
-            <li>Supporting Python.</li>
-            <li>Supporting PHP and Kotlin.</li>
+            <li>1.0.5: Supporting JSON.</li>
+            <li>1.0.4: Supporting Python.</li>
+            <li>1.0.3: Supporting PHP and Kotlin.</li>
         </ul>
         ]]>
     </change-notes>
@@ -77,6 +79,7 @@
     <depends optional="true" config-file="withPhp.xml">com.jetbrains.php</depends>
     <depends optional="true" config-file="withKotlin.xml">org.jetbrains.kotlin</depends>
     <depends optional="true" config-file="withPython.xml">com.intellij.modules.python-core-capable</depends>
+    <depends optional="true" config-file="withJson.xml">com.intellij.modules.json</depends>
 
     <extensions defaultExtensionNs="com.intellij">
         <projectConfigurable

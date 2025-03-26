@@ -17,6 +17,7 @@
 
 package com.rios.codeawaretypo;
 
+import com.intellij.json.psi.JsonStringLiteral;
 import com.intellij.lang.javascript.psi.JSLiteralExpression;
 import com.intellij.psi.*;
 import com.intellij.spellchecker.tokenizer.SpellcheckingStrategy;
@@ -59,20 +60,21 @@ public class NoNamedElementSpellStrategy extends SpellcheckingStrategy {
 
     @Override
     public boolean isMyContext(@NotNull PsiElement element) {
-        if (element instanceof PsiNamedElement) {
-            return isEnabled(element);
-        }
-        if (element instanceof PsiLiteralExpression literalExpression) {
+        return switch (element) {
+        case PsiNamedElement psiNamedElement -> isEnabled(psiNamedElement);
+        case JsonStringLiteral jsonLiteral -> jsonLiteral.isPropertyName();
+        case PsiLiteralExpression literalExpression -> {
 
             // Check if we're inside an annotation attribute
             if (isInsideAnnotationAttribute(literalExpression)) {
                 // Check if the string has a resolvable reference
-                return hasResolvableReference(literalExpression);
+                yield hasResolvableReference(literalExpression);
             }
-        } else {
-            return element instanceof JSLiteralExpression jsle && hasResolvableReference(jsle);
+            yield false;
         }
-        return false;
+        case JSLiteralExpression jsle -> hasResolvableReference(jsle);
+        default -> false;
+        };
     }
 
     private static boolean isEnabled(@NotNull PsiElement element) {
