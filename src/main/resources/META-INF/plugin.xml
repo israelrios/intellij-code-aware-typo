@@ -81,6 +81,10 @@
     <depends optional="true" config-file="withPython.xml">com.intellij.modules.python-core-capable</depends>
     <depends optional="true" config-file="withJson.xml">com.intellij.modules.json</depends>
 
+    <extensions defaultExtensionNs="org.jetbrains.kotlin">
+        <supportsKotlinPluginMode supportsK2="true"/>
+    </extensions>
+
     <extensions defaultExtensionNs="com.intellij">
         <projectConfigurable
                 instance="com.rios.codeawaretypo.CodeAwareTypoConfigurable"
