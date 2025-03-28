@@ -17,8 +17,6 @@
 
 package com.rios.codeawaretypo;
 
-import com.intellij.json.psi.JsonStringLiteral;
-import com.intellij.lang.javascript.psi.JSLiteralExpression;
 import com.intellij.psi.*;
 import com.intellij.spellchecker.tokenizer.SpellcheckingStrategy;
 import com.intellij.spellchecker.tokenizer.Tokenizer;
@@ -28,13 +26,11 @@ public class NoNamedElementSpellStrategy extends SpellcheckingStrategy {
 
     private boolean isInsideAnnotationAttribute(PsiLiteralExpression element) {
         PsiElement parent = element.getParent();
-        // going up all parents is too much, checking only the direct parent
         return parent instanceof PsiNameValuePair &&
             parent.getParent() instanceof PsiAnnotationParameterList;
     }
 
-    private boolean hasResolvableReference(PsiLiteralValue element) {
-        // Check project settings *before* any other checks
+    protected boolean hasResolvableReference(PsiLiteralValue element) {
         if (!isEnabled(element)) {
             return false;
         }
@@ -62,7 +58,6 @@ public class NoNamedElementSpellStrategy extends SpellcheckingStrategy {
     public boolean isMyContext(@NotNull PsiElement element) {
         return switch (element) {
         case PsiNamedElement psiNamedElement -> isEnabled(psiNamedElement);
-        case JsonStringLiteral jsonLiteral -> jsonLiteral.isPropertyName();
         case PsiLiteralExpression literalExpression -> {
 
             // Check if we're inside an annotation attribute
@@ -72,12 +67,11 @@ public class NoNamedElementSpellStrategy extends SpellcheckingStrategy {
             }
             yield false;
         }
-        case JSLiteralExpression jsle -> hasResolvableReference(jsle);
         default -> false;
         };
     }
 
-    private static boolean isEnabled(@NotNull PsiElement element) {
+    protected static boolean isEnabled(@NotNull PsiElement element) {
         return CodeAwareTypoProjectSettings.getInstance(element.getProject()).isEnabled();
     }
 }

@@ -18,6 +18,6 @@
 <idea-plugin>
     <extensions defaultExtensionNs="com.intellij.spellchecker">
         <support language="JavaScript" order="first"
-                 implementationClass="com.rios.codeawaretypo.NoNamedElementSpellStrategy"/>
+                 implementationClass="com.rios.codeawaretypo.JavascriptNoNamedElementSpellStrategy"/>
     </extensions>
 </idea-plugin>

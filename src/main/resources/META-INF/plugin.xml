@@ -48,7 +48,7 @@
                 </ul>
             </li>
             <li>HTML and XML tags.</li>
-            <li>JSON properties.</li>
+            <li>JSON property keys.</li>
             <li>Resolvable string literal references inside Java annotation attributes</li>
         </ul>
 

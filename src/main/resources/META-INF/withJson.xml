@@ -18,8 +18,8 @@
 <idea-plugin>
     <extensions defaultExtensionNs="com.intellij.spellchecker">
         <support language="JSON" order="first"
-                 implementationClass="com.rios.codeawaretypo.NoNamedElementSpellStrategy"/>
+                 implementationClass="com.rios.codeawaretypo.JsonNoNamedElementSpellStrategy"/>
         <support language="JSON5" order="first"
-                 implementationClass="com.rios.codeawaretypo.NoNamedElementSpellStrategy"/>
+                 implementationClass="com.rios.codeawaretypo.JsonNoNamedElementSpellStrategy"/>
     </extensions>
 </idea-plugin>
