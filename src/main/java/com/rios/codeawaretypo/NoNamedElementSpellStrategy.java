@@ -30,22 +30,12 @@ public class NoNamedElementSpellStrategy extends SpellcheckingStrategy {
             parent.getParent() instanceof PsiAnnotationParameterList;
     }
 
-    protected boolean hasResolvableReference(PsiLiteralValue element) {
+    protected boolean hasReferences(PsiLiteralValue element) {
         if (!isEnabled(element)) {
             return false;
         }
-        if (!(element.getValue() instanceof String)) {
-            return false;
-        }
 
-        PsiReference[] references = element.getReferences();
-        for (PsiReference reference : references) {
-            PsiElement resolvedElement = reference.resolve();
-            if (resolvedElement != null) {
-                return true;
-            }
-        }
-        return false;
+        return element.getReferences().length > 0;
     }
 
     @NotNull
@@ -63,7 +53,7 @@ public class NoNamedElementSpellStrategy extends SpellcheckingStrategy {
             // Check if we're inside an annotation attribute
             if (isInsideAnnotationAttribute(literalExpression)) {
                 // Check if the string has a resolvable reference
-                yield hasResolvableReference(literalExpression);
+                yield hasReferences(literalExpression);
             }
             yield false;
         }

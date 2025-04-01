@@ -18,15 +18,23 @@
 package com.rios.codeawaretypo;
 
 import com.intellij.lang.javascript.psi.JSLiteralExpression;
+import com.intellij.model.psi.PsiSymbolReferenceService;
 import com.intellij.psi.PsiElement;
 import org.jetbrains.annotations.NotNull;
 
+@SuppressWarnings("UnstableApiUsage")
 public class JavascriptNoNamedElementSpellStrategy extends NoNamedElementSpellStrategy {
+
+    private final @NotNull PsiSymbolReferenceService symbolReferenceService;
+
+    public JavascriptNoNamedElementSpellStrategy() {
+        this.symbolReferenceService = PsiSymbolReferenceService.getService();
+    }
 
     @Override
     public boolean isMyContext(@NotNull PsiElement element) {
         if (element instanceof JSLiteralExpression jsle) {
-            return hasResolvableReference(jsle);
+            return hasReferences(jsle) || !symbolReferenceService.getReferences(element).isEmpty();
         }
         return super.isMyContext(element);
     }
