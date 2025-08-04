@@ -17,11 +17,11 @@
 
 plugins {
     id("java")
-    id("org.jetbrains.intellij.platform") version "2.1.0"
+    id("org.jetbrains.intellij.platform") version "2.5.0"
 }
 
 group = "com.rios"
-version = "1.0.5"
+version = "1.0.6"
 
 repositories {
     mavenCentral()
@@ -34,8 +34,6 @@ repositories {
 dependencies {
     intellijPlatform {
         intellijIdeaUltimate("2024.2.3")
-
-        instrumentationTools()
 
         bundledPlugin("com.intellij.properties")
         bundledPlugin("com.intellij.java")
@@ -54,7 +52,7 @@ tasks {
 
     patchPluginXml {
         sinceBuild.set("242")
-        untilBuild.set("251.*")
+        untilBuild.set("252.*")
     }
 
     signPlugin {

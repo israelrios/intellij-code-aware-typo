@@ -60,6 +60,7 @@
     <change-notes>
         <![CDATA[
         <ul>
+            <li>1.0.6: Compatibility with newer IDEs.</li>
             <li>1.0.5: Supporting JSON.</li>
             <li>1.0.4: Supporting Python.</li>
             <li>1.0.3: Supporting PHP and Kotlin.</li>
