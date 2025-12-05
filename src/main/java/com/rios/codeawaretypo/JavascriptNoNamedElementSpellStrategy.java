@@ -17,13 +17,14 @@
 
 package com.rios.codeawaretypo;
 
+import org.jetbrains.annotations.NotNull;
+
 import com.intellij.lang.javascript.psi.JSLiteralExpression;
 import com.intellij.model.Symbol;
 import com.intellij.model.psi.PsiSymbolReference;
-import com.intellij.model.psi.PsiSymbolService;
 import com.intellij.model.psi.PsiSymbolReferenceService;
+import com.intellij.model.psi.PsiSymbolService;
 import com.intellij.psi.PsiElement;
-import org.jetbrains.annotations.NotNull;
 
 @SuppressWarnings("UnstableApiUsage")
 public class JavascriptNoNamedElementSpellStrategy extends NoNamedElementSpellStrategy {
@@ -37,10 +38,10 @@ public class JavascriptNoNamedElementSpellStrategy extends NoNamedElementSpellSt
     @Override
     public boolean isMyContext(@NotNull PsiElement element) {
         if (element instanceof JSLiteralExpression jsle) {
-            if (!isEnabled(jsle)) {
+            if (!isEnabled(jsle) || !jsle.isStringLiteral()) {
                 return false;
             }
-            return hasReferences(jsle) || hasResolvableSymbolReferences(jsle);
+            return hasResolvableSymbolReferences(jsle);
         }
         return super.isMyContext(element);
     }

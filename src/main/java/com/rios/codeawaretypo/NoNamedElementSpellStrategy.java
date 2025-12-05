@@ -17,35 +17,14 @@
 
 package com.rios.codeawaretypo;
 
-import com.intellij.psi.*;
-import com.intellij.spellchecker.tokenizer.SpellcheckingStrategy;
-import com.intellij.spellchecker.tokenizer.Tokenizer;
 import org.jetbrains.annotations.NotNull;
 
+import com.intellij.psi.PsiElement;
+import com.intellij.psi.PsiNamedElement;
+import com.intellij.spellchecker.tokenizer.SpellcheckingStrategy;
+import com.intellij.spellchecker.tokenizer.Tokenizer;
+
 public class NoNamedElementSpellStrategy extends SpellcheckingStrategy {
-
-    protected boolean hasReferences(PsiLiteralValue element) {
-        if (!isEnabled(element)) {
-            return false;
-        }
-
-        for (PsiReference reference : element.getReferences()) {
-            if (reference instanceof PsiPolyVariantReference polyVariantReference) {
-                for (ResolveResult resolveResult : polyVariantReference.multiResolve(false)) {
-                    PsiElement target = resolveResult.getElement();
-                    if (target != null && !element.isEquivalentTo(target)) {
-                        return true;
-                    }
-                }
-            }
-
-            PsiElement target = reference.resolve();
-            if (target != null && !element.isEquivalentTo(target)) {
-                return true;
-            }
-        }
-        return false;
-    }
 
     @NotNull
     @Override

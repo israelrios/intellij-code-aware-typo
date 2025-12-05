@@ -37,10 +37,8 @@ public class JavaNoNamedElementSpellStrategy extends NoNamedElementSpellStrategy
     @Override
     public boolean isMyContext(@NotNull PsiElement element) {
         if (element instanceof PsiLiteralExpression literalExpression) {
-            if (isInsideAnnotationAttribute(literalExpression)) {
-                return hasReferences(literalExpression);
-            }
-            return false;
+            return isEnabled(element) && isInsideAnnotationAttribute(literalExpression)
+                   && literalExpression.getReferences().length > 0;
         }
         return super.isMyContext(element);
     }
