@@ -24,12 +24,6 @@ import org.jetbrains.annotations.NotNull;
 
 public class NoNamedElementSpellStrategy extends SpellcheckingStrategy {
 
-    private boolean isInsideAnnotationAttribute(PsiLiteralExpression element) {
-        PsiElement parent = element.getParent();
-        return parent instanceof PsiNameValuePair &&
-            parent.getParent() instanceof PsiAnnotationParameterList;
-    }
-
     protected boolean hasReferences(PsiLiteralValue element) {
         if (!isEnabled(element)) {
             return false;
@@ -46,19 +40,10 @@ public class NoNamedElementSpellStrategy extends SpellcheckingStrategy {
 
     @Override
     public boolean isMyContext(@NotNull PsiElement element) {
-        return switch (element) {
-        case PsiNamedElement psiNamedElement -> isEnabled(psiNamedElement);
-        case PsiLiteralExpression literalExpression -> {
-
-            // Check if we're inside an annotation attribute
-            if (isInsideAnnotationAttribute(literalExpression)) {
-                // Check if the string has a resolvable reference
-                yield hasReferences(literalExpression);
-            }
-            yield false;
+        if (element instanceof PsiNamedElement psiNamedElement) {
+            return isEnabled(psiNamedElement);
         }
-        default -> false;
-        };
+        return false;
     }
 
     protected static boolean isEnabled(@NotNull PsiElement element) {
