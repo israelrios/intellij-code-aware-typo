@@ -60,6 +60,7 @@
     <change-notes>
         <![CDATA[
         <ul>
+            <li>1.0.7: Compatibility with 2025.3 IDEs.</li>
             <li>1.0.6: Compatibility with newer IDEs.</li>
             <li>1.0.5: Supporting JSON.</li>
             <li>1.0.4: Supporting Python.</li>
@@ -68,7 +69,7 @@
         ]]>
     </change-notes>
 
-    <idea-version since-build="242"/>
+    <idea-version since-build="242" until-build="253.*"/>
 
     <depends>com.intellij.modules.platform</depends>
     <depends optional="true" config-file="withProperties.xml">com.intellij.properties</depends>

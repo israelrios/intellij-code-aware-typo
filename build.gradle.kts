@@ -21,7 +21,9 @@ plugins {
 }
 
 group = "com.rios"
-version = "1.0.6"
+version = "1.0.7"
+
+val platformVersion = providers.gradleProperty("platformVersion").orElse("2025.2.5").get()
 
 repositories {
     mavenCentral()
@@ -33,13 +35,12 @@ repositories {
 
 dependencies {
     intellijPlatform {
-        intellijIdeaUltimate("2024.2.3")
+        intellijIdeaUltimate(platformVersion)
 
         bundledPlugin("com.intellij.properties")
         bundledPlugin("com.intellij.java")
         bundledPlugin("JavaScript")
         bundledPlugin("org.jetbrains.kotlin")
-        plugin("com.jetbrains.php", "243.25659.59")
     }
 }
 
@@ -52,7 +53,7 @@ tasks {
 
     patchPluginXml {
         sinceBuild.set("242")
-        untilBuild.set("252.*")
+        untilBuild.set("253.*")
     }
 
     signPlugin {
