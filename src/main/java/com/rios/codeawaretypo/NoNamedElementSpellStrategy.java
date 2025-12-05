@@ -29,7 +29,22 @@ public class NoNamedElementSpellStrategy extends SpellcheckingStrategy {
             return false;
         }
 
-        return element.getReferences().length > 0;
+        for (PsiReference reference : element.getReferences()) {
+            if (reference instanceof PsiPolyVariantReference polyVariantReference) {
+                for (ResolveResult resolveResult : polyVariantReference.multiResolve(false)) {
+                    PsiElement target = resolveResult.getElement();
+                    if (target != null && !element.isEquivalentTo(target)) {
+                        return true;
+                    }
+                }
+            }
+
+            PsiElement target = reference.resolve();
+            if (target != null && !element.isEquivalentTo(target)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @NotNull

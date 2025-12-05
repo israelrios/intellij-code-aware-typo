@@ -18,6 +18,9 @@
 package com.rios.codeawaretypo;
 
 import com.intellij.lang.javascript.psi.JSLiteralExpression;
+import com.intellij.model.Symbol;
+import com.intellij.model.psi.PsiSymbolReference;
+import com.intellij.model.psi.PsiSymbolService;
 import com.intellij.model.psi.PsiSymbolReferenceService;
 import com.intellij.psi.PsiElement;
 import org.jetbrains.annotations.NotNull;
@@ -34,8 +37,25 @@ public class JavascriptNoNamedElementSpellStrategy extends NoNamedElementSpellSt
     @Override
     public boolean isMyContext(@NotNull PsiElement element) {
         if (element instanceof JSLiteralExpression jsle) {
-            return hasReferences(jsle) || !symbolReferenceService.getReferences(element).isEmpty();
+            if (!isEnabled(jsle)) {
+                return false;
+            }
+            return hasReferences(jsle) || hasResolvableSymbolReferences(jsle);
         }
         return super.isMyContext(element);
+    }
+
+    private boolean hasResolvableSymbolReferences(@NotNull PsiElement element) {
+        PsiSymbolService psiSymbolService = PsiSymbolService.getInstance();
+
+        for (PsiSymbolReference reference : symbolReferenceService.getReferences(element)) {
+            for (Symbol symbol : reference.resolveReference()) {
+                PsiElement target = psiSymbolService.extractElementFromSymbol(symbol);
+                if (target != null && !element.isEquivalentTo(target)) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

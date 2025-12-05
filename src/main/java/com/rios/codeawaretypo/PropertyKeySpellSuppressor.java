@@ -35,7 +35,7 @@ public class PropertyKeySpellSuppressor implements InspectionSuppressor {
     }
 
     @Override
-    public SuppressQuickFix @NotNull [] getSuppressActions(@Nullable PsiElement element,
+    public SuppressQuickFix[] getSuppressActions(@Nullable PsiElement element,
         @NotNull String toolId) {
         return new SuppressQuickFix[0];
     }
