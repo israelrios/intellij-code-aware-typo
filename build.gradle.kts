@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2025  Israel Rios
+ * Copyright (c) 2025-2026  Israel Rios
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as published by
@@ -21,7 +21,7 @@ plugins {
 }
 
 group = "com.rios"
-version = "1.0.7"
+version = "1.0.8"
 
 val platformVersion = providers.gradleProperty("platformVersion").orElse("2026.1").get()
 
