@@ -17,13 +17,13 @@
 
 plugins {
     id("java")
-    id("org.jetbrains.intellij.platform") version "2.5.0"
+    id("org.jetbrains.intellij.platform") version "2.13.1"
 }
 
 group = "com.rios"
 version = "1.0.7"
 
-val platformVersion = providers.gradleProperty("platformVersion").orElse("2025.2.5").get()
+val platformVersion = providers.gradleProperty("platformVersion").orElse("2026.1").get()
 
 repositories {
     mavenCentral()
@@ -35,12 +35,13 @@ repositories {
 
 dependencies {
     intellijPlatform {
-        intellijIdeaUltimate(platformVersion)
+        intellijIdea(platformVersion)
 
         bundledPlugin("com.intellij.properties")
         bundledPlugin("com.intellij.java")
         bundledPlugin("JavaScript")
         bundledPlugin("org.jetbrains.kotlin")
+        bundledModule("com.intellij.modules.json")
     }
 }
 
@@ -53,7 +54,7 @@ tasks {
 
     patchPluginXml {
         sinceBuild.set("242")
-        untilBuild.set("253.*")
+        untilBuild.set("261.*")
     }
 
     signPlugin {
