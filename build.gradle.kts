@@ -17,13 +17,13 @@
 
 plugins {
     id("java")
-    id("org.jetbrains.intellij.platform") version "2.13.1"
+    id("org.jetbrains.intellij.platform") version "2.18.1"
 }
 
 group = "com.rios"
-version = "1.0.8"
+version = "1.0.9"
 
-val platformVersion = providers.gradleProperty("platformVersion").orElse("2026.1").get()
+val platformVersion = providers.gradleProperty("platformVersion").orElse("2026.2").get()
 
 repositories {
     mavenCentral()
@@ -48,13 +48,12 @@ dependencies {
 tasks {
     // Set the JVM compatibility versions
     withType<JavaCompile> {
-        sourceCompatibility = "21"
-        targetCompatibility = "21"
+        options.release.set(21)
     }
 
     patchPluginXml {
         sinceBuild.set("242")
-        untilBuild.set("261.*")
+        untilBuild.set("262.*")
     }
 
     signPlugin {
