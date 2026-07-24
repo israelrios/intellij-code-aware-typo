@@ -60,6 +60,7 @@
     <change-notes>
         <![CDATA[
         <ul>
+            <li>1.0.10: Performance improvements in the spellchecking hot path.</li>
             <li>1.0.9: Compatibility with 2026.2 IDEs.</li>
             <li>1.0.8: Compatibility with 2026.1 IDEs.</li>
             <li>1.0.7: Compatibility with 2025.3 IDEs.</li>

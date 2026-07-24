@@ -21,7 +21,7 @@ plugins {
 }
 
 group = "com.rios"
-version = "1.0.9"
+version = "1.0.10"
 
 val platformVersion = providers.gradleProperty("platformVersion").orElse("2026.2").get()
 
