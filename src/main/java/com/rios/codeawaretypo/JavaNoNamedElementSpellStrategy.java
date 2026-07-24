@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2025  Israel Rios
+ * Copyright (c) 2025-2026  Israel Rios
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as published by
@@ -37,7 +37,8 @@ public class JavaNoNamedElementSpellStrategy extends NoNamedElementSpellStrategy
     @Override
     public boolean isMyContext(@NotNull PsiElement element) {
         if (element instanceof PsiLiteralExpression literalExpression) {
-            return isEnabled(element) && isInsideAnnotationAttribute(literalExpression)
+            // Cheapest structural check first, expensive reference computation last.
+            return isInsideAnnotationAttribute(literalExpression) && isEnabled(element)
                    && literalExpression.getReferences().length > 0;
         }
         return super.isMyContext(element);

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2025  Israel Rios
+ * Copyright (c) 2025-2026  Israel Rios
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as published by
@@ -37,6 +37,6 @@ public class PropertyKeySpellSuppressor implements InspectionSuppressor {
     @Override
     public SuppressQuickFix[] getSuppressActions(@Nullable PsiElement element,
         @NotNull String toolId) {
-        return new SuppressQuickFix[0];
+        return SuppressQuickFix.EMPTY_ARRAY;
     }
 }

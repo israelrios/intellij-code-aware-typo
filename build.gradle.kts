@@ -39,7 +39,6 @@ dependencies {
 
         bundledPlugin("com.intellij.properties")
         bundledPlugin("com.intellij.java")
-        bundledPlugin("JavaScript")
         bundledPlugin("org.jetbrains.kotlin")
         bundledModule("com.intellij.modules.json")
     }

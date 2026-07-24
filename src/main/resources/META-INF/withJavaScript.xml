@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2025  Israel Rios
+  ~ Copyright (c) 2025-2026  Israel Rios
   ~
   ~ This program is free software: you can redistribute it and/or modify
   ~ it under the terms of the GNU Affero General Public License as published by
@@ -18,6 +18,6 @@
 <idea-plugin>
     <extensions defaultExtensionNs="com.intellij.spellchecker">
         <support language="JavaScript" order="first"
-                 implementationClass="com.rios.codeawaretypo.JavascriptNoNamedElementSpellStrategy"/>
+                 implementationClass="com.rios.codeawaretypo.NoNamedElementSpellStrategy"/>
     </extensions>
 </idea-plugin>

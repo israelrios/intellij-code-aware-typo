@@ -71,7 +71,7 @@
         ]]>
     </change-notes>
 
-    <idea-version since-build="242" until-build="262.*"/>
+    <!-- since/until build range is injected by the patchPluginXml Gradle task (see build.gradle.kts). -->
 
     <depends>com.intellij.modules.platform</depends>
     <depends optional="true" config-file="withProperties.xml">com.intellij.properties</depends>
