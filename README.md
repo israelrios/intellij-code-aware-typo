@@ -30,10 +30,14 @@ references.
 
 **Building from source:**
 
-This project uses Gradle.
+This project uses Gradle and requires JDK 25 to build against IntelliJ IDEA 2026.3.
 
 1. Clone the repository.
 2. Run `./gradlew buildPlugin` to build the plugin.
 3. The plugin ZIP file will be in `build/distributions`.
+
+To build against an installed IDE instead of downloading it, run
+`./gradlew buildPlugin -PplatformPath=/path/to/idea`.
+The download version can also be overridden with `-PplatformVersion=2026.3`.
 
 **Contribution:** See AGPLv3 License (included) for details.

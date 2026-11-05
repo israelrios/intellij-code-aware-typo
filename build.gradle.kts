@@ -21,9 +21,10 @@ plugins {
 }
 
 group = "com.rios"
-version = "1.0.10"
+version = "1.0.11"
 
-val platformVersion = providers.gradleProperty("platformVersion").orElse("2026.2").get()
+val platformVersion = providers.gradleProperty("platformVersion").orElse("2026.3").get()
+val platformPath = providers.gradleProperty("platformPath")
 
 repositories {
     mavenCentral()
@@ -35,12 +36,17 @@ repositories {
 
 dependencies {
     intellijPlatform {
-        intellijIdea(platformVersion)
+        if (platformPath.isPresent) {
+            local(platformPath.get())
+        } else {
+            intellijIdea(platformVersion)
+        }
 
         bundledPlugin("com.intellij.properties")
         bundledPlugin("com.intellij.java")
         bundledPlugin("org.jetbrains.kotlin")
         bundledModule("com.intellij.modules.json")
+        bundledModule("intellij.spellchecker")
     }
 }
 
@@ -52,7 +58,7 @@ tasks {
 
     patchPluginXml {
         sinceBuild.set("242")
-        untilBuild.set("262.*")
+        untilBuild.set("263.*")
     }
 
     signPlugin {

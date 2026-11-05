@@ -60,6 +60,7 @@
     <change-notes>
         <![CDATA[
         <ul>
+            <li>1.0.11: Compatibility with IntelliJ IDEA 2026.3.</li>
             <li>1.0.10: Performance improvements in the spellchecking hot path.</li>
             <li>1.0.9: Compatibility with 2026.2 IDEs.</li>
             <li>1.0.8: Compatibility with 2026.1 IDEs.</li>
@@ -75,6 +76,7 @@
     <!-- since/until build range is injected by the patchPluginXml Gradle task (see build.gradle.kts). -->
 
     <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.spellchecker</depends>
     <depends optional="true" config-file="withProperties.xml">com.intellij.properties</depends>
     <depends optional="true" config-file="withJava.xml">com.intellij.java</depends>
     <depends optional="true" config-file="withJavaScript.xml">JavaScript</depends>
